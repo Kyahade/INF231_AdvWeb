@@ -9,7 +9,7 @@ function App() {
   const [editing, setEditing] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/").then((response) => {
+    axios.get("http://localhost:5000/students").then((response) => {
       setStudents(response.data);
     });
   }, []);
