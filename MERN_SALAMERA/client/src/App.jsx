@@ -9,7 +9,7 @@ function App() {
   const [editing, setEditing] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/students").then((response) => {
+    axios.get("https://inf231advwebsalamera.vercel.app/").then((response) => {
       setStudents(response.data);
     });
   }, []);
@@ -17,13 +17,13 @@ function App() {
   const handleSubmit = () => {
     if (editing === null) {
       axios
-        .post("http://localhost:5000/students", {
+        .post("https://inf231advwebsalamera.vercel.app/students", {
           name,
           course,
           age,
         })
         .then(() => {
-          return axios.get("http://localhost:5000/students");
+          return axios.get("https://inf231advwebsalamera.vercel.app/students");
         })
         .then((response) => {
           setStudents(response.data);
@@ -33,13 +33,13 @@ function App() {
         });
     } else {
       axios
-        .put(`http://localhost:5000/students/${editing}`, {
+        .put(`https://inf231advwebsalamera.vercel.app/students/${editing}`, {
           name,
           course,
           age,
         })
         .then(() => {
-          return axios.get("http://localhost:5000/students");
+          return axios.get("https://inf231advwebsalamera.vercel.app/students");
         })
         .then((response) => {
           setStudents(response.data);
@@ -53,9 +53,9 @@ function App() {
 
   const deleteStudent = (id) => {
     axios
-      .delete(`http://localhost:5000/students/${id}`)
+      .delete(`https://inf231advwebsalamera.vercel.app/students/${id}`)
       .then(() => {
-        return axios.get("http://localhost:5000/students");
+        return axios.get("https://inf231advwebsalamera.vercel.app/students");
       })
       .then((response) => {
         setStudents(response.data);
