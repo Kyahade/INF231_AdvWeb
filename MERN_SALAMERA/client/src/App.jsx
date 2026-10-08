@@ -1,8 +1,7 @@
-import axios from 'axios';
-import { useState, useEffect } from 'react';
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 function App() {
-
   const [students, setStudents] = useState([]);
   const [name, setName] = useState("");
   const [course, setCourse] = useState("");
@@ -10,11 +9,9 @@ function App() {
   const [editing, setEditing] = useState(null);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/students")
-      .then((response) => {
-        setStudents(response.data);
-      });
+    axios.get("http://localhost:5000/students").then((response) => {
+      setStudents(response.data);
+    });
   }, []);
 
   const handleSubmit = () => {
@@ -79,27 +76,28 @@ function App() {
 
       <h2>Add / Edit Student</h2>
 
-      <input 
-        type="text" 
+      <input
+        type="text"
         placeholder="Enter name"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-
-      <input 
-        type="text" 
+<br></br>
+      <input
+        type="text"
         placeholder="Enter course"
         value={course}
         onChange={(e) => setCourse(e.target.value)}
       />
-
-      <input 
-        type="number" 
+<br></br>
+      <input
+        type="number"
+        min="1"
         placeholder="Enter age"
         value={age}
         onChange={(e) => setAge(e.target.value)}
       />
-
+<br></br>
       <button onClick={handleSubmit}>
         {editing === null ? "Add Student" : "Update Student"}
       </button>
@@ -108,6 +106,7 @@ function App() {
 
       {students.map((student) => (
         <div key={student._id}>
+          <br></br>
           <p>Name: {student.name}</p>
           <p>Course: {student.course}</p>
           <p>Age: {student.age}</p>
